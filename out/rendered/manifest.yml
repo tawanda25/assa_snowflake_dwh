@@ -1,0 +1,43 @@
+manifest_version: 2
+type: DCM_PROJECT
+default_target: 'DEV'
+
+targets:
+  DEV:
+    account_identifier: IJETGZW-SQ77743    # Your org-account identifier
+    project_name: 'ASSA_ENV_DB.DCM_SCHEMA.ASSA_PROJECT_DEV'
+    project_owner: ACCOUNTADMIN
+    templating_config: 'DEV'
+  QA:
+    account_identifier: IJETGZW-SQ77743
+    project_name: 'ASSA_ENV_DB.DCM_SCHEMA.ASSA_PROJECT_QA'
+    project_owner: ACCOUNTADMIN
+    templating_config: 'QA'
+  PROD:
+    account_identifier: IJETGZW-SQ77743
+    project_name: 'ASSA_ENV_DB.DCM_SCHEMA.ASSA_PROJECT_PROD'
+    project_owner: ACCOUNTADMIN
+    templating_config: 'PROD'
+
+templating:
+  defaults:
+    env: 'DEV'
+    db: 'ASSA_DEV_DWH'
+    wh_size: 'XSMALL'
+    data_retention_days: 1
+  configurations:
+    DEV:
+      env: 'DEV'
+      db: 'ASSA_DEV_DWH'
+      wh_size: 'XSMALL'
+      data_retention_days: 1
+    QA:
+      env: 'QA'
+      db: 'ASSA_QA_DWH'
+      wh_size: 'SMALL'
+      data_retention_days: 7
+    PROD:
+      env: 'PROD'
+      db: 'ASSA_PROD_DWH'
+      wh_size: 'LARGE'
+      data_retention_days: 90

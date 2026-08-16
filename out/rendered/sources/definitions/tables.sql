@@ -1,0 +1,28 @@
+-- EXTRACT layer: raw/landing tables
+DEFINE TABLE ASSA_DEV_DWH.EXTRACT.CUSTOMERS_RAW (
+    id NUMBER AUTOINCREMENT,
+    raw_data VARIANT,
+    source_system VARCHAR(100),
+    loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+)
+CHANGE_TRACKING = TRUE
+COMMENT = 'Raw customer data';
+
+-- STAGE layer: cleansed tables
+DEFINE TABLE ASSA_DEV_DWH.STAGE.CUSTOMERS_CLEANED (
+    id NUMBER,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    staged_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+)
+COMMENT = 'Cleansed customer data';
+
+-- WAREHOUSE layer: modeled tables
+DEFINE TABLE ASSA_DEV_DWH.WAREHOUSE.DIM_CUSTOMER (
+    id NUMBER,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    updated_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+)
+DATA_RETENTION_TIME_IN_DAYS = 1
+COMMENT = 'Customer dimension table';
