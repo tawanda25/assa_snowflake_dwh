@@ -8,6 +8,15 @@ DEFINE TABLE {{db}}.EXTRACT.CUSTOMERS_RAW (
 CHANGE_TRACKING = TRUE
 COMMENT = 'Raw customer data';
 
+DEFINE TABLE {{db}}.EXTRACT.MEMBERS_RAW (
+    id NUMBER AUTOINCREMENT,
+    raw_data VARIANT,
+    source_system VARCHAR(100),
+    loaded_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP()
+)
+CHANGE_TRACKING = TRUE
+COMMENT = 'Raw members data';
+
 -- STAGE layer: cleansed tables
 DEFINE TABLE {{db}}.STAGE.CUSTOMERS_CLEANED (
     id NUMBER,
