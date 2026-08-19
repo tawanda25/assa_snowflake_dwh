@@ -36,7 +36,7 @@ DEFINE TABLE {{db}}.WAREHOUSE.DIM_CUSTOMER (
 DATA_RETENTION_TIME_IN_DAYS = {{data_retention_days}}
 COMMENT = 'Customer dimension table';
 
-DEFINE TABLE {{db}}.WAREHOUSE.DIM_MEMBERS (
+DEFINE TABLE {{db}}.WAREHOUSE.DIM_MEMBER (
     id NUMBER,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255),
